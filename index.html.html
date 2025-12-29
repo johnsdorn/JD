@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorn Narrative | Brand Narrative & Creative Strategy</title>
+    <meta name="description" content="I help brands move from vague to sharp — building the narrative, POV, and voice that makes everything else work.">
+    
+    <!-- Fonts: Fraunces (distinctive variable serif) + Outfit (modern geometric sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Deep blue base — slightly more purple-tinted */
+            --color-bg: #0b0d1a;
+            --color-bg-elevated: #10132a;
+            --color-bg-card: #151938;
+            
+            /* Text hierarchy — brighter body copy */
+            --color-text: #eceef5;
+            --color-text-body: #d8dce8;
+            --color-text-muted: #b8c0d4;
+            --color-text-subtle: #6a7394;
+            
+            /* Coral-pink accent */
+            --color-accent: #ff6b7a;
+            --color-accent-glow: rgba(255, 107, 122, 0.35);
+            --color-accent-soft: #ff8a95;
+            --color-accent-bright: #ff5268;
+            
+            /* Borders */
+            --color-border: #1e2345;
+            --color-border-light: #181c38;
+            
+            /* Fonts */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+            --space-2xl: 12rem;
+            
+            --max-width: 1200px;
+            --max-width-narrow: 800px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Atmospheric gradient overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 15% 15%, rgba(255, 107, 122, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 85%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Noise texture */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        ::selection {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        strong {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 60%, transparent 100%);
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+        
+        nav {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+        
+        nav a {
+            font-size: 0.8125rem;
+            font-weight: 400;
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+            letter-spacing: 0.01em;
+        }
+        
+        nav a:hover {
+            color: var(--color-accent);
+        }
+        
+        nav a.nav-cta {
+            color: var(--color-text);
+            border: 1px solid var(--color-accent);
+            padding: 0.4rem 0.875rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a.nav-cta:hover {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+        }
+        
+        /* Main content */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+        
+        section {
+            padding: var(--space-xl) var(--space-lg);
+            background-color: var(--color-bg);
+        }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .container--narrow {
+            max-width: var(--max-width-narrow);
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: var(--space-xl);
+            padding-bottom: var(--space-xl);
+            position: relative;
+            background-color: var(--color-bg);
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, var(--color-accent), transparent);
+        }
+        
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.75rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            max-width: 800px;
+            margin-bottom: var(--space-md);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.4s;
+        }
+        
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-accent);
+            text-shadow: 0 0 50px var(--color-accent-glow);
+        }
+        
+        .hero-subhead {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 300;
+            color: var(--color-text-body);
+            max-width: 700px;
+            margin-bottom: var(--space-md);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.5s;
+        }
+        
+        .hero-description {
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: var(--color-text-body);
+            max-width: 580px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Section headers */
+        .section-header {
+            margin-bottom: var(--space-md);
+        }
+        
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-accent);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+        }
+        
+        /* What I Do */
+        .what-i-do {
+            background-color: var(--color-bg-elevated);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+        }
+        
+        .what-i-do::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            opacity: 0.4;
+        }
+        
+        .systems-intro {
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: var(--color-text-body);
+            margin-bottom: var(--space-lg);
+            max-width: 700px;
+            line-height: 1.8;
+        }
+        
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .system-card {
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            background: var(--color-bg-card);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .system-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .system-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 80px var(--color-accent-glow);
+        }
+        
+        .system-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .system-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: var(--space-xs);
+            letter-spacing: -0.01em;
+        }
+        
+        .system-card h3 span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            margin-top: var(--space-xs);
+        }
+        
+        .system-card p {
+            font-size: 0.9375rem;
+            font-weight: 300;
+            color: var(--color-text-body);
+            line-height: 1.7;
+        }
+        
+        /* Who I Work With */
+        .who-content {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: var(--space-xl);
+        }
+        
+        .who-main p {
+            font-size: 1.1875rem;
+            font-weight: 300;
+            color: var(--color-text-body);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        
+        .who-main p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .who-boundaries {
+            padding: var(--space-md);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-left: 3px solid var(--color-accent);
+            align-self: start;
+        }
+        
+        .who-boundaries h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: var(--space-sm);
+            color: var(--color-accent-soft);
+        }
+        
+        .who-boundaries p {
+            font-size: 0.9375rem;
+            font-weight: 300;
+            color: var(--color-text-body);
+            line-height: 1.7;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        
+        .service-card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-lg);
+            padding: var(--space-lg);
+            border: 1px solid var(--color-border);
+            background: var(--color-bg-elevated);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-soft));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .service-card:hover {
+            border-color: var(--color-border-light);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-meta {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        
+        .service-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+        }
+        
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.875rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+        
+        .service-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--color-text-subtle);
+        }
+        
+        .service-details span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .service-details span::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--color-accent-glow);
+        }
+        
+        .service-content p {
+            color: var(--color-text-body);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        .service-content p + p {
+            margin-top: var(--space-sm);
+        }
+        
+        .service-addon {
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .service-addon h4 {
+            font-family: var(--font-display);
+            font-size: 1.0625rem;
+            font-weight: 400;
+            margin-bottom: var(--space-xs);
+            color: var(--color-accent-soft);
+        }
+        
+        .service-addon p {
+            font-size: 0.9375rem;
+        }
+        
+        /* Retainer tiers */
+        .retainer-tiers {
+            margin-top: var(--space-md);
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--color-text-subtle);
+        }
+        
+        .retainer-tier {
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+        
+        .retainer-tier:last-child {
+            border-bottom: none;
+        }
+        
+        .retainer-tier h4 {
+            font-family: var(--font-body);
+            font-size: 0.9375rem;
+            font-weight: 400;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .retainer-tier h4 span {
+            color: var(--color-accent-soft);
+            font-weight: 300;
+        }
+        
+        .retainer-tier ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs) var(--space-md);
+        }
+        
+        .retainer-tier li {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            color: var(--color-text-body);
+        }
+        
+        .retainer-tier li::before {
+            content: '—';
+            margin-right: var(--space-xs);
+            color: var(--color-text-subtle);
+        }
+        
+        /* What Makes Me Different */
+        .different-content {
+            max-width: var(--max-width-narrow);
+        }
+        
+        .different-content p {
+            font-size: 1.0625rem;
+            font-weight: 300;
+            color: var(--color-text-body);
+            line-height: 1.9;
+            margin-bottom: var(--space-md);
+        }
+        
+        .different-content p:first-child {
+            font-size: 1.125rem;
+            color: var(--color-text);
+        }
+        
+        .different-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Contact */
+        .contact {
+            background: var(--color-bg-elevated);
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            position: relative;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            opacity: 0.4;
+        }
+        
+        .contact-content {
+            max-width: 580px;
+            margin: 0 auto;
+        }
+        
+        .contact-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: var(--space-md);
+        }
+        
+        .contact h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: var(--space-md);
+        }
+        
+        .contact p {
+            font-size: 1.0625rem;
+            font-weight: 300;
+            color: var(--color-text-body);
+            margin-bottom: var(--space-lg);
+            line-height: 1.8;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-text);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--color-accent);
+            transition: all 0.3s ease;
+            letter-spacing: 0.01em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        
+        .contact-link:hover {
+            color: var(--color-bg);
+            box-shadow: 0 0 40px var(--color-accent-glow);
+        }
+        
+        .contact-link:hover::before {
+            transform: translateX(0);
+        }
+        
+        /* Footer */
+        footer {
+            padding: var(--space-lg);
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            background-color: var(--color-bg);
+        }
+        
+        footer p {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            color: var(--color-text-subtle);
+            letter-spacing: 0.01em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            section {
+                padding: var(--space-lg) var(--space-md);
+            }
+            
+            header {
+                padding: var(--space-sm) var(--space-md);
+            }
+            
+            .systems-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+            
+            .who-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            }
+        
+        @media (max-width: 640px) {
+            :root {
+                --space-lg: 3rem;
+                --space-xl: 5rem;
+            }
+            
+            header {
+                flex-wrap: wrap;
+                gap: var(--space-sm);
+                background: var(--color-bg);
+            }
+            
+            .logo {
+                font-size: 1.125rem;
+            }
+            
+            nav {
+                gap: var(--space-sm);
+                flex-wrap: nowrap;
+            }
+            
+            nav a {
+                font-size: 0.6875rem;
+                white-space: nowrap;
+            }
+            
+            .hero {
+                padding-top: var(--space-lg);
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .retainer-tier ul {
+                flex-direction: column;
+                gap: var(--space-xs);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Dorn Narrative<span style="color: var(--color-accent);">.</span></a>
+        <nav>
+            <a href="#what-i-do">What I Do</a>
+            <a href="#who-its-for">Who It's For</a>
+            <a href="#services">Services</a>
+            <a href="#why-me">Why Me</a>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <p class="hero-label">Narrative & Creative Strategy Partner</p>
+                <h1>I help brands move from&nbsp;<em>vague</em>&nbsp;to&nbsp;<em>sharp.</em></h1>
+                <p class="hero-subhead">Building the narrative, POV, and voice that makes everything else work.</p>
+                <p class="hero-description">I work with founder-led brands that are figuring out what they stand for — and how to say it. Most brands skip straight to marketing and storytelling without first defining who they are and why they exist. The result? They sound like everyone else.</p>
+            </div>
+        </section>
+        
+        <!-- What I Do -->
+        <section id="what-i-do" class="what-i-do">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Services</p>
+                    <h2 class="section-title">Three foundational systems.</h2>
+                </div>
+                
+                <p class="systems-intro">I work with brands to build a foundation comprised of three core elements. This is the foundation that makes everything else — marketing, campaigns, content — actually work.</p>
+                
+                <div class="systems-grid">
+                    <div class="system-card">
+                        <h3>Narrative <span>Who You Are</span></h3>
+                        <p>The foundational articulation of who you are, why you exist and what makes you different. Not a mission statement or brand story — the truth about your brand, distilled and sharpened.</p>
+                    </div>
+                    
+                    <div class="system-card">
+                        <h3>POV <span>What You Believe</span></h3>
+                        <p>The stance you take in the world. Not just what you do, but what you believe and how you're different. POV is what makes brands magnetic instead of forgettable.</p>
+                    </div>
+                    
+                    <div class="system-card">
+                        <h3>Voice <span>How You Sound</span></h3>
+                        <p>How you sound across every touchpoint. Not tone guidelines that sit in a folder, but a living system that makes every sentence unmistakably yours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Who I Work With -->
+        <section id="who-its-for" class="what-i-do">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Who I Work With</p>
+                    <h2 class="section-title">Founder-led brands building something meaningful.</h2>
+                </div>
+                
+                <div class="who-content">
+                    <div class="who-main">
+                        <p>I work with <strong>founder-led and early-stage consumer brands</strong> that are building something meaningful and need clarity before they can scale.</p>
+                        <p>I work best with founders who value <strong>clarity, taste, and modern creative thinking</strong> — and who want a thought partner, not just a contractor.</p>
+                    </div>
+                    
+                    <div class="who-boundaries">
+                        <h3>What I'm Not.</h3>
+                        <p>I'm not the right fit if you need design, production, day-to-day content, or campaign execution. I focus on strategic foundation and creative direction — the what and how, not the making.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services -->
+        <section id="services">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Services</p>
+                    <h2 class="section-title">How we can work together.</h2>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Service 1: Brand Foundation -->
+                    <div class="service-card">
+                        <div class="service-meta">
+                            <p class="service-label">Core Service</p>
+                            <h3>Brand Foundation: Narrative, POV & Voice</h3>
+                            <div class="service-details">
+                                <span>5–6 weeks</span>
+                                <span>$8,500–$18,000</span>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <p>A strategic engagement that gives your brand <strong>complete foundational clarity</strong> — who you are, what you believe, and how you express it. This includes your brand narrative, POV statement, messaging pillars, creative north star, and foundational voice direction.</p>
+                            <p>It's the <strong>complete foundation</strong> that makes all future creative and marketing work actually mean something.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2: Creative Platform -->
+                    <div class="service-card">
+                        <div class="service-meta">
+                            <p class="service-label">Foundation Extension</p>
+                            <h3>Creative Platform & Idea Development</h3>
+                            <div class="service-details">
+                                <span>3–5 weeks</span>
+                                <span>$6,000–$14,000</span>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <p>A sprint that translates your narrative and POV into <strong>creative building blocks</strong> — signature concepts, ownable ideas, and long-term creative platforms.</p>
+                            <p>This requires Brand Foundation (or existing narrative/POV) and <strong>bridges the gap between strategy and execution</strong>, giving you the creative direction to make your brand distinct in practice.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3: Retainer -->
+                    <div class="service-card">
+                        <div class="service-meta">
+                            <p class="service-label">Continuous Collaboration</p>
+                            <h3>Ongoing Creative Partnership</h3>
+                            <div class="service-details">
+                                <span>Monthly engagement</span>
+                                <span>$2,500–$6,000/month</span>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <p>For brands that have completed Brand Foundation and want <strong>continuous creative and strategic support</strong>. Regular strategy sessions, campaign concepting, launch messaging, and guidance as your brand evolves.</p>
+                            
+                            <div class="retainer-tiers">
+                                <div class="retainer-tier">
+                                    <h4>Light Support <span>$2,500–$3,500/mo</span></h4>
+                                    <ul>
+                                        <li>Monthly strategy session</li>
+                                        <li>Async creative feedback</li>
+                                        <li>48-hour response</li>
+                                    </ul>
+                                </div>
+                                <div class="retainer-tier">
+                                    <h4>Standard Partnership <span>$4,000–$5,000/mo</span></h4>
+                                    <ul>
+                                        <li>Bi-weekly sessions</li>
+                                        <li>1 deliverable/month</li>
+                                        <li>Unlimited async feedback</li>
+                                    </ul>
+                                </div>
+                                <div class="retainer-tier">
+                                    <h4>Premium Collaboration <span>$5,500–$6,000/mo</span></h4>
+                                    <ul>
+                                        <li>Weekly sessions</li>
+                                        <li>2–3 deliverables/month</li>
+                                        <li>Same-day response</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- What Makes Me Different -->
+        <section id="why-me" class="what-i-do">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Why I'm Different</p>
+                    <h2 class="section-title">Experience across every angle.</h2>
+                </div>
+                
+                <div class="different-content">
+                        <p>I focus on <strong>narrative, POV, and voice</strong> — the foundational clarity most brands skip. Not generic positioning frameworks. Not 50-slide brand strategy decks. The articulation work that makes everything else actually work.</p>
+                        
+                        <p>I've led creative and brand work for clients like <strong>PepsiCo, Unilever, Warner Bros., and Corona</strong> — from branded content and social campaigns to 360° creative strategies and in-house marketing leadership. I've been on both sides: agency-side developing creative for clients, and in-house leading brand and creative strategy.</p>
+                        
+                        <p>I've seen how brands work from every angle: the pitch, the execution, and the day-to-day reality of running a modern brand. And my <strong>journalism background</strong> means I don't just build frameworks — I write the narrative, POV, and voice copy with clarity and punch.</p>
+                    </div>
+            </div>
+        </section>
+        
+        <!-- Contact -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <img src="headshot.jpg" alt="John Dorn" class="contact-photo">
+                    <h2>Let's talk.</h2>
+                    <p>If you're building something meaningful and need clarity before you can scale, we might be a match.</p>
+                    <a href="mailto:john@dornnarrative.com" class="contact-link">john@dornnarrative.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 Dorn Narrative. All rights reserved.</p>
+    </footer>
+    
+    <!-- Smooth scroll and subtle animations -->
+    <script>
+        // Add scroll-based fade-in for sections
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section:not(.hero)').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+        
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
