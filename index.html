@@ -777,7 +777,57 @@
                 flex-direction: column;
                 gap: var(--space-xs);
             }
-        }
+        
+
+            /* Mobile tweaks */
+            nav {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .hero {
+                padding-top: var(--space-md);
+            }
+
+            .hero-label {
+                margin-bottom: var(--space-sm);
+            }
+
+
+            /* Further mobile hero spacing fixes */
+            .hero {
+                min-height: auto;
+                justify-content: flex-start;
+                padding-top: var(--space-sm);
+            }
+
+            header {
+                padding-bottom: var(--space-xs);
+            }
+
+
+            /* Final mobile hero offset to clear fixed header */
+            .hero {
+                padding-top: calc(var(--space-md) + 82px);
+            }
+
+
+            /* Mobile nav alignment: labels left, CTA right */
+            nav {
+                justify-content: flex-start;
+            }
+
+            nav a.nav-cta {
+                margin-left: auto;
+            }
+
+
+            /* Mobile pricing layout: price on its own line */
+            .retainer-tier h4 span {
+                display: block;
+                margin-top: 0.25rem;
+            }
+}
     </style>
 </head>
 <body>
