@@ -31,22 +31,22 @@
         }
 
         /* Allow desktop logo to breathe, but keep everything centered */
-        .-inner {
+        .gate-inner {
           text-align: center;
           width: 100%;
           max-width: min(900px, 92vw);
           padding: 32px;
         }
 
-        #password- .-logo {
+        #password-gate .gate-logo {
           width: 100%;
           display: flex;
           justify-content: center;
           margin-bottom: 24px;
         }
 
-        /*  logo matches header logo (same class, same font settings) */
-        #password- .-logo .logo {
+        /* Gate logo matches header logo (same class, same font settings) */
+        #password-gate .gate-logo .logo {
           font-family: var(--font-display);
           font-weight: 400;
           letter-spacing: -0.02em;
@@ -59,13 +59,13 @@
           font-size: clamp(3rem, 6vw, 6.5rem);
         }
 
-        .-inner p {
+        .gate-inner p {
           opacity: 0.7;
           margin-bottom: 24px;
         }
 
         /* Default form styles (mobile-first) */
-        .-inner input {
+        .gate-inner input {
           width: 100%;
           padding: 12px;
           margin-bottom: 12px;
@@ -74,7 +74,7 @@
           color: #fff;
         }
 
-        .-inner button {
+        .gate-inner button {
           width: 100%;
           padding: 12px;
           border: 1px solid #ff7a7a;
@@ -83,7 +83,7 @@
           cursor: pointer;
         }
 
-        .-inner button:hover {
+        .gate-inner button:hover {
           background: #ff7a7a;
           color: #000;
         }
@@ -96,11 +96,11 @@
 
         /* Mobile: keep your tight form + allow logo to wrap if needed */
         @media (max-width: 640px) {
-          .-inner {
+          .gate-inner {
             max-width: 320px; /* tight form */
           }
 
-          #password- .-logo .logo {
+          #password-gate .gate-logo .logo {
             white-space: normal; /* allow wrap on mobile */
             font-size: 12vw;
           }
@@ -108,7 +108,7 @@
 
         /* Desktop-only: constrain form, not logo */
         @media (min-width: 768px) {
-          #password- .-form {
+          #password-gate .gate-form {
             max-width: 420px;
             margin: 0 auto;
           }
@@ -983,7 +983,7 @@
         <div class="container">
             <p class="hero-label">Narrative & Creative Strategy Partner</p>
             <h1>I help brands move from&nbsp;<em>vague</em>&nbsp;to&nbsp;<em>sharp.</em></h1>
-            <p class="hero-subhead">Building the narrative, POV and voice that makes everything else work.</p>
+            <p class="hero-subhead">Building the narrative, POV, and voice that makes everything else work.</p>
             <p class="hero-description">I work with founder-led brands that are figuring out what they stand for — and how to say it. Most brands skip straight to marketing and storytelling without first defining who they are and why they exist. The result? They sound like everyone else.</p>
         </div>
     </section>
@@ -1095,7 +1095,7 @@
 
                         <div class="retainer-tiers">
                             <div class="retainer-tier">
-                                <h4>Light-Touch Support <span>$2,500–$3,500/mo</span></h4>
+                                <h4>Light Support <span>$2,500–$3,500/mo</span></h4>
                                 <ul>
                                     <li>Monthly strategy session</li>
                                     <li>Async creative feedback</li>
@@ -1204,42 +1204,27 @@
   const PASSWORD = "preview";
 
   function checkPassword() {
-    const inputEl = document.getElementById("password-input");
+    const input = document.getElementById("password-input").value;
     const error = document.getElementById("error");
-    const input = inputEl ? inputEl.value : "";
 
     if (input === PASSWORD) {
       const gate = document.getElementById("password-gate");
-      if (gate) gate.style.display = "none";
+      gate.style.display = "none";
 
       // Reset scroll position after keyboard/input scrolling
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     } else {
-      if (error) error.style.display = "block";
+      error.style.display = "block";
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const inputEl = document.getElementById("password-input");
-    if (!inputEl) return;
-
-    // Enter submits
-    inputEl.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") checkPassword();
-    });
-
-    // Desktop-only autofocus (mobile unchanged)
-    if (window.matchMedia("(min-width: 768px)").matches) {
-      // Slight delay helps Safari/Chrome paint first
-      setTimeout(() => {
-        inputEl.focus({ preventScroll: true });
-        // Optional: ensure caret is visible at end
-        inputEl.setSelectionRange(inputEl.value.length, inputEl.value.length);
-      }, 80);
+  // Allow Enter key to submit
+  document.getElementById("password-input").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      checkPassword();
     }
   });
 </script>
-
 
 </body>
 </html>
