@@ -31,22 +31,22 @@
         }
 
         /* Allow desktop logo to breathe, but keep everything centered */
-        .gate-inner {
+        .-inner {
           text-align: center;
           width: 100%;
           max-width: min(900px, 92vw);
           padding: 32px;
         }
 
-        #password-gate .gate-logo {
+        #password- .-logo {
           width: 100%;
           display: flex;
           justify-content: center;
           margin-bottom: 24px;
         }
 
-        /* Gate logo matches header logo (same class, same font settings) */
-        #password-gate .gate-logo .logo {
+        /*  logo matches header logo (same class, same font settings) */
+        #password- .-logo .logo {
           font-family: var(--font-display);
           font-weight: 400;
           letter-spacing: -0.02em;
@@ -59,13 +59,13 @@
           font-size: clamp(3rem, 6vw, 6.5rem);
         }
 
-        .gate-inner p {
+        .-inner p {
           opacity: 0.7;
           margin-bottom: 24px;
         }
 
         /* Default form styles (mobile-first) */
-        .gate-inner input {
+        .-inner input {
           width: 100%;
           padding: 12px;
           margin-bottom: 12px;
@@ -74,7 +74,7 @@
           color: #fff;
         }
 
-        .gate-inner button {
+        .-inner button {
           width: 100%;
           padding: 12px;
           border: 1px solid #ff7a7a;
@@ -83,7 +83,7 @@
           cursor: pointer;
         }
 
-        .gate-inner button:hover {
+        .-inner button:hover {
           background: #ff7a7a;
           color: #000;
         }
@@ -96,11 +96,11 @@
 
         /* Mobile: keep your tight form + allow logo to wrap if needed */
         @media (max-width: 640px) {
-          .gate-inner {
+          .-inner {
             max-width: 320px; /* tight form */
           }
 
-          #password-gate .gate-logo .logo {
+          #password- .-logo .logo {
             white-space: normal; /* allow wrap on mobile */
             font-size: 12vw;
           }
@@ -108,7 +108,7 @@
 
         /* Desktop-only: constrain form, not logo */
         @media (min-width: 768px) {
-          #password-gate .gate-form {
+          #password- .-form {
             max-width: 420px;
             margin: 0 auto;
           }
@@ -1204,68 +1204,42 @@
   const PASSWORD = "preview";
 
   function checkPassword() {
-    const input = document.getElementById("password-input").value;
+    const inputEl = document.getElementById("password-input");
     const error = document.getElementById("error");
+    const input = inputEl ? inputEl.value : "";
 
     if (input === PASSWORD) {
       const gate = document.getElementById("password-gate");
-      gate.style.display = "none";
+      if (gate) gate.style.display = "none";
 
       // Reset scroll position after keyboard/input scrolling
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     } else {
-      error.style.display = "block";
+      if (error) error.style.display = "block";
     }
   }
 
-  // Allow Enter key to submit
-  document.getElementById("password-input").addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      checkPassword();
+  document.addEventListener("DOMContentLoaded", () => {
+    const inputEl = document.getElementById("password-input");
+    if (!inputEl) return;
+
+    // Enter submits
+    inputEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkPassword();
+    });
+
+    // Desktop-only autofocus (mobile unchanged)
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      // Slight delay helps Safari/Chrome paint first
+      setTimeout(() => {
+        inputEl.focus({ preventScroll: true });
+        // Optional: ensure caret is visible at end
+        inputEl.setSelectionRange(inputEl.value.length, inputEl.value.length);
+      }, 80);
     }
   });
-
-<script>
-  const PASSWORD = "preview";
-
-  function checkPassword() {
-    const input = document.getElementById("password-input").value;
-    const error = document.getElementById("error");
-
-    if (input === PASSWORD) {
-      const gate = document.getElementById("password-gate");
-      gate.style.display = "none";
-
-      // Reset scroll position after keyboard/input scrolling
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    } else {
-      error.style.display = "block";
-    }
-  }
-
-  // Allow Enter key to submit
-  document.getElementById("password-input").addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      checkPassword();
-    }
-  });
-
- // Desktop-only autofocus (reliable)
-window.addEventListener("load", () => {
-  if (window.matchMedia("(min-width: 768px)").matches) {
-    setTimeout(() => {
-      const el = document.getElementById("password-input");
-      if (!el) return;
-      el.focus({ preventScroll: true });
-      el.click(); // ensures caret visibility
-    }, 80);
-  }
-});
-
 </script>
-    
-    
-</script>
+
 
 </body>
 </html>
