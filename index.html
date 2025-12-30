@@ -105,7 +105,23 @@ transform: scale(0.95);
     font-size: 6vw; /* visually ~50% width */
   }
 }
+        
+#password-gate .gate-logo {
+  display: flex;
+  justify-content: center;
+}
 
+        #password-gate .gate-logo .logo {
+  max-width: 50vw;
+  text-align: center;
+}
+
+ @media (max-width: 640px) {
+  #password-gate .gate-logo .logo {
+    max-width: 65vw;
+  }
+}
+       
         
 @media (max-width: 768px) {
   .hero-label {
