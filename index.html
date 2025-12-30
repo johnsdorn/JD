@@ -19,12 +19,15 @@
 transform: scale(0.95);            
 }
         
+/* Gate logo should match header logo exactly */
 #password-gate .gate-logo .logo {
-  font-family: inherit;
-  letter-spacing: inherit;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
   text-decoration: none;
-  color: inherit;
+  color: var(--color-text);
 }
+
 
 
         #password-gate .gate-logo {
@@ -80,47 +83,42 @@ transform: scale(0.95);
   background: #ff7a7a;
   color: #000;
 }
-/* Gate logo sizing */
+/* Gate logo sizing + centering (clean, non-conflicting) */
+.gate-inner {
+  text-align: center;
+  width: 100%;
+  max-width: min(900px, 92vw); /* key: allow desktop to breathe */
+  padding: 32px;
+}
+
 #password-gate .gate-logo {
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center; /* centers the logo block */
 }
 
 #password-gate .gate-logo .logo {
-  display: inline-block;
-  font-size: clamp(2.25rem, 6vw, 3.5rem);
-  line-height: 1.1;
+  display: block;
+  width: 50vw;            /* desktop: ~50% of viewport width */
+  max-width: 720px;       /* prevents absurdly huge on ultrawide */
+  text-align: center;     /* centers wrapped lines */
+  line-height: 1.05;
+  font-size: clamp(3rem, 6vw, 6.5rem);
 }
 
-/* Mobile: ~65% of screen feel */
+/* Mobile: ~65% of viewport width */
 @media (max-width: 640px) {
+  .gate-inner {
+    max-width: 320px;     /* keep your nice tight mobile form width */
+  }
+
   #password-gate .gate-logo .logo {
-    font-size: 12vw; /* visually ~65% width */
+    width: 65vw;
+    max-width: none;
+    font-size: 12vw;
   }
 }
 
-/* Desktop: ~50% of screen feel */
-@media (min-width: 641px) {
-  #password-gate .gate-logo .logo {
-    font-size: 6vw; /* visually ~50% width */
-  }
-}
-        
-#password-gate .gate-logo {
-  display: flex;
-  justify-content: center;
-}
-
-        #password-gate .gate-logo .logo {
-  max-width: 50vw;
-  text-align: center;
-}
-
- @media (max-width: 640px) {
-  #password-gate .gate-logo .logo {
-    max-width: 65vw;
-  }
-}
        
         
 @media (max-width: 768px) {
