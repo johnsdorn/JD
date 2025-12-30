@@ -18,7 +18,20 @@
   font-size: 16px;
 transform: scale(0.95);            
 }
+        
+#password-gate .gate-logo .logo {
+  font-family: inherit;   /* inherits your header font */
+  font-size: inherit;     /* don’t upscale */
+  letter-spacing: inherit;
+  text-decoration: none;
+  color: inherit;
+}
 
+        #password-gate .gate-logo {
+  margin-bottom: 24px;
+}
+
+        
         #password-gate {
   position: fixed;
   inset: 0;
@@ -68,6 +81,13 @@ transform: scale(0.95);
   color: #000;
 }
 
+@media (max-width: 768px) {
+  .hero-label {
+    display: none;
+  }
+}
+
+        
 .error {
   margin-top: 12px;
   color: #ff7a7a;
@@ -901,7 +921,12 @@ transform: scale(0.95);
 <body>
 <div id="password-gate">
   <div class="gate-inner">
-    <h1>Dorn Narrative</h1>
+    <div class="gate-logo">
+  <span class="logo">
+    Dorn Narrative<span style="color: var(--color-accent);">.</span>
+  </span>
+</div>
+
     <p>Private preview</p>
 
     <input
