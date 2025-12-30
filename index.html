@@ -1250,10 +1250,18 @@
     }
   });
 
-  // Desktop-only autofocus
+ // Desktop-only autofocus (reliable)
+window.addEventListener("load", () => {
   if (window.matchMedia("(min-width: 768px)").matches) {
-    document.getElementById("password-input").focus();
+    setTimeout(() => {
+      const el = document.getElementById("password-input");
+      if (!el) return;
+      el.focus({ preventScroll: true });
+      el.click(); // ensures caret visibility
+    }, 80);
   }
+});
+
 </script>
     
     
