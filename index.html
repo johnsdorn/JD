@@ -18,6 +18,19 @@
   font-size: 16px;
 transform: scale(0.95);            
 }
+
+/* Desktop-only: constrain gate form width */
+@media (min-width: 768px) {
+  #password-gate .gate-inner {
+    max-width: 420px; /* restores original, balanced size */
+  }
+
+  #password-gate .gate-inner input,
+  #password-gate .gate-inner button {
+    width: 100%;
+  }
+}
+
         
 /* Gate logo should match header logo exactly */
 #password-gate .gate-logo .logo {
