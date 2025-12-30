@@ -80,7 +80,33 @@ transform: scale(0.95);
   background: #ff7a7a;
   color: #000;
 }
+/* Gate logo sizing */
+#password-gate .gate-logo {
+  width: 100%;
+  text-align: center;
+}
 
+#password-gate .gate-logo .logo {
+  display: inline-block;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  line-height: 1.1;
+}
+
+/* Mobile: ~65% of screen feel */
+@media (max-width: 640px) {
+  #password-gate .gate-logo .logo {
+    font-size: 12vw; /* visually ~65% width */
+  }
+}
+
+/* Desktop: ~50% of screen feel */
+@media (min-width: 641px) {
+  #password-gate .gate-logo .logo {
+    font-size: 6vw; /* visually ~50% width */
+  }
+}
+
+        
 @media (max-width: 768px) {
   .hero-label {
     display: none;
