@@ -19,11 +19,7 @@
 transform: scale(0.95);            
 }
 
-/* Desktop-only: constrain gate form width */
-@media (min-width: 768px) {
-  #password-gate .gate-inner {
-    max-width: 420px; /* restores original, balanced size */
-  }
+
 
   #password-gate .gate-inner input,
   #password-gate .gate-inner button {
@@ -132,6 +128,18 @@ transform: scale(0.95);
   }
 }
 
+/* Desktop-only: constrain form, not logo */
+@media (min-width: 768px) {
+  #password-gate .gate-form {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  #password-gate .gate-form input,
+  #password-gate .gate-form button {
+    width: 100%;
+  }
+}
        
         
 @media (max-width: 768px) {
@@ -982,12 +990,15 @@ transform: scale(0.95);
 
     <p>Private preview</p>
 
-    <input
-      type="password"
-      id="password-input"
-      placeholder="Enter password"
-    />
-    <button onclick="checkPassword()">Enter</button>
+    <div class="gate-form">
+  <input
+    type="password"
+    id="password-input"
+    placeholder="Enter password"
+  />
+  <button onclick="checkPassword()">Enter</button>
+</div>
+
 
     <p id="error" class="error">Incorrect password</p>
   </div>
