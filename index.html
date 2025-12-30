@@ -14,6 +14,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
+        #password-gate {
+  position: fixed;
+  inset: 0;
+  background: #0b0d16;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gate-inner {
+  text-align: center;
+  max-width: 320px;
+  width: 100%;
+  padding: 32px;
+}
+
+.gate-inner h1 {
+  margin-bottom: 4px;
+}
+
+.gate-inner p {
+  opacity: 0.7;
+  margin-bottom: 24px;
+}
+
+.gate-inner input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: transparent;
+  border: 1px solid #555;
+  color: #fff;
+}
+
+.gate-inner button {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ff7a7a;
+  background: transparent;
+  color: #ff7a7a;
+  cursor: pointer;
+}
+
+.gate-inner button:hover {
+  background: #ff7a7a;
+  color: #000;
+}
+
+.error {
+  margin-top: 12px;
+  color: #ff7a7a;
+  display: none;
+}
+
         :root {
             /* Deep blue base — slightly more purple-tinted */
             --color-bg: #0b0d1a;
@@ -839,6 +894,22 @@
     </style>
 </head>
 <body>
+<div id="password-gate">
+  <div class="gate-inner">
+    <h1>Dorn Narrative</h1>
+    <p>Private preview</p>
+
+    <input
+      type="password"
+      id="password-input"
+      placeholder="Enter password"
+    />
+    <button onclick="checkPassword()">Enter</button>
+
+    <p id="error" class="error">Incorrect password</p>
+  </div>
+</div>
+
     <header>
        <a href="#" class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Dorn Narrative<span style="color: var(--color-accent);">.</span></a>
         <nav>
@@ -1072,5 +1143,20 @@
             });
         });
     </script>
+    <script>
+  const PASSWORD = "preview";
+
+  function checkPassword() {
+    const input = document.getElementById("password-input").value;
+    const error = document.getElementById("error");
+
+    if (input === PASSWORD) {
+      document.getElementById("password-gate").style.display = "none";
+    } else {
+      error.style.display = "block";
+    }
+  }
+</script>
+
 </body>
 </html>
