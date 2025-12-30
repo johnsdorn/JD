@@ -16,6 +16,7 @@
     <style>
         .gate-inner input {
   font-size: 16px;
+transform: scale(0.95);            
 }
 
         #password-gate {
@@ -1155,8 +1156,13 @@
     const error = document.getElementById("error");
 
     if (input === PASSWORD) {
-      document.getElementById("password-gate").style.display = "none";
-    } else {
+  const gate = document.getElementById("password-gate");
+  gate.style.display = "none";
+
+  // Reset scroll position after keyboard/input scrolling
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+} else {
+
       error.style.display = "block";
     }
   }
