@@ -1224,6 +1224,39 @@
       checkPassword();
     }
   });
+
+<script>
+  const PASSWORD = "preview";
+
+  function checkPassword() {
+    const input = document.getElementById("password-input").value;
+    const error = document.getElementById("error");
+
+    if (input === PASSWORD) {
+      const gate = document.getElementById("password-gate");
+      gate.style.display = "none";
+
+      // Reset scroll position after keyboard/input scrolling
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    } else {
+      error.style.display = "block";
+    }
+  }
+
+  // Allow Enter key to submit
+  document.getElementById("password-input").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      checkPassword();
+    }
+  });
+
+  // Desktop-only autofocus
+  if (window.matchMedia("(min-width: 768px)").matches) {
+    document.getElementById("password-input").focus();
+  }
+</script>
+    
+    
 </script>
 
 </body>
