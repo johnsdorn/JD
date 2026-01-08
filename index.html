@@ -371,11 +371,30 @@
             font-size: 1.125rem;
             font-weight: 300;
             color: var(--color-text-body);
-            max-width: 580px;
+            max-width: 700px;
             line-height: 1.8;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
             animation-delay: 0.6s;
+        }
+
+        .hero-description + .hero-description {
+            margin-top: var(--space-sm);
+            animation-delay: 0.7s;
+        }
+
+        .hero-description + .hero-description + .hero-cta {
+            animation-delay: 0.8s;
+        }
+
+        .hero-cta {
+            margin-top: var(--space-sm);
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: var(--color-accent);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.7s;
         }
 
         @keyframes fadeInUp {
@@ -434,9 +453,21 @@
             font-size: 1.125rem;
             font-weight: 300;
             color: var(--color-text-body);
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-md);
             max-width: 700px;
             line-height: 1.8;
+            position: relative;
+            padding-left: var(--space-md);
+        }
+
+        .systems-intro .quote-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--color-accent);
+            border-radius: 2px;
         }
 
         .systems-grid {
@@ -556,11 +587,12 @@
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: var(--space-lg);
-            padding: var(--space-lg);
+            padding: var(--space-md) var(--space-lg);
             border: 1px solid var(--color-border);
             background: var(--color-bg-elevated);
             transition: all 0.4s ease;
             position: relative;
+            align-items: center;
         }
 
         .service-card::before {
@@ -612,7 +644,7 @@
             gap: var(--space-xs);
             font-size: 0.875rem;
             font-weight: 400;
-            color: var(--color-text-subtle);
+            color: var(--color-text-muted);
         }
 
         .service-details span {
@@ -632,7 +664,7 @@
 
         .service-content p {
             color: var(--color-text-body);
-            font-size: 1rem;
+            font-size: 1.1875rem;
             font-weight: 300;
             line-height: 1.8;
         }
@@ -641,74 +673,27 @@
             margin-top: var(--space-sm);
         }
 
-        .service-addon {
-            margin-top: var(--space-md);
-            padding-top: var(--space-md);
-            border-top: 1px solid var(--color-border);
-        }
-
-        .service-addon h4 {
-            font-family: var(--font-display);
-            font-size: 1.0625rem;
-            font-weight: 400;
-            margin-bottom: var(--space-xs);
-            color: var(--color-accent-soft);
-        }
-
-        .service-addon p {
-            font-size: 0.9375rem;
-        }
-
-        /* Retainer tiers */
-        .retainer-tiers {
-            margin-top: var(--space-md);
-            padding-top: var(--space-sm);
-            border-top: 1px solid var(--color-text-subtle);
-        }
-
-        .retainer-tier {
-            padding: var(--space-sm) 0;
-            border-bottom: 1px solid var(--color-border-light);
-        }
-
-        .retainer-tier:last-child {
-            border-bottom: none;
-        }
-
-        .retainer-tier h4 {
-            font-family: var(--font-body);
-            font-size: 0.9375rem;
-            font-weight: 400;
-            margin-bottom: var(--space-xs);
-        }
-
-        .retainer-tier h4 span {
-            color: var(--color-accent-soft);
-            font-weight: 300;
-        }
-
-        .retainer-tier ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-xs) var(--space-md);
-        }
-
-        .retainer-tier li {
-            font-size: 0.8125rem;
-            font-weight: 300;
-            color: var(--color-text-body);
-        }
-
-        .retainer-tier li::before {
-            content: '—';
-            margin-right: var(--space-xs);
-            color: var(--color-text-subtle);
-        }
-
         /* What Makes Me Different */
-        .different-content {
+        #why-me {
+            padding-bottom: 0;
+            padding-top: var(--space-lg);
+        }
+
+        .different-content-wrapper {
+            padding-bottom: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .different-content-wrapper .section-header,
+        .different-content-wrapper .different-content {
+            width: 100%;
             max-width: var(--max-width-narrow);
+        }
+
+        .different-content {
+            text-align: left;
         }
 
         .different-content p {
@@ -726,6 +711,44 @@
 
         .different-content p:last-child {
             margin-bottom: 0;
+        }
+
+        /* Logo Ticker */
+        .logo-ticker-wrapper {
+            display: block;
+            overflow: hidden;
+            padding: var(--space-md) 0;
+            border-top: 1px solid var(--color-border);
+            /* Break out of container to full width */
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .logo-ticker {
+            display: flex;
+            animation: ticker 50s linear infinite;
+            width: fit-content;
+            will-change: transform;
+        }
+
+        .logo-ticker img {
+            height: 77px;
+            width: 77px;
+            object-fit: contain;
+            opacity: 0.9;
+            flex-shrink: 0;
+            margin-right: 2.5rem;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-33.333%);
+            }
         }
 
         /* Contact */
@@ -769,7 +792,7 @@
         }
 
         .contact p {
-            font-size: 1.0625rem;
+            font-size: 1.1875rem;
             font-weight: 300;
             color: var(--color-text-body);
             margin-bottom: var(--space-lg);
@@ -885,11 +908,6 @@
                 font-size: 2.25rem;
             }
 
-            .retainer-tier ul {
-                flex-direction: column;
-                gap: var(--space-xs);
-            }
-
             /* Mobile tweaks */
             nav {
                 width: 100%;
@@ -929,15 +947,14 @@
                 margin-left: auto;
             }
 
-            /* Mobile pricing layout: price on its own line */
-            .retainer-tier h4 span {
-                display: block;
-                margin-top: 0.25rem;
-            }
-
             /* Micro spacing between nav and hero label */
             .hero-label {
                 margin-top: 10px;
+            }
+
+            /* More space before the vertical line on mobile */
+            .hero-cta {
+                margin-bottom: var(--space-lg);
             }
         }
     </style>
@@ -983,8 +1000,10 @@
         <div class="container">
             <p class="hero-label">Narrative & Creative Strategy Partner</p>
             <h1>I help brands move from&nbsp;<em>vague</em>&nbsp;to&nbsp;<em>sharp.</em></h1>
-            <p class="hero-subhead">Building the narrative, POV, and voice that makes everything else work.</p>
-            <p class="hero-description">I work with founder-led brands that are figuring out what they stand for — and how to say it. Most brands skip straight to marketing and storytelling without first defining who they are and why they exist. The result? They sound like everyone else.</p>
+            <p class="hero-subhead">Building the narrative, POV and voice foundation that makes everything else work.</p>
+            <p class="hero-description">Most brands skip straight to marketing and storytelling without first defining <strong>why they're in the market</strong> and <strong>what stories they're best suited to tell.</strong></p>
+            <p class="hero-description">The result? They sound like everyone else.</p>
+            <p class="hero-cta">Let's solve that together.</p>
         </div>
     </section>
 
@@ -993,25 +1012,25 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">What I Do</p>
-                <h2 class="section-title">Three foundational systems.</h2>
+                <h2 class="section-title">Three foundational systems, all working together.</h2>
             </div>
 
-            <p class="systems-intro">I work with brands to build a foundation comprised of three core elements. This is the foundation that makes everything else — marketing, campaigns, content — actually work.</p>
+            <p class="systems-intro"><span class="quote-line"></span>These three become the foundation for everything authored by your brand: messaging, campaigns, content, creative direction, and beyond.</p>
 
             <div class="systems-grid">
                 <div class="system-card">
                     <h3>Narrative <span>Who You Are</span></h3>
-                    <p>The foundational articulation of who you are and why you exist. Not a mission statement. The past, present and future of your brand, distilled and sharpened.</p>
+                    <p>The foundational articulation of who you are and why you exist. Not a mission statement. <strong>The past, present and future of your brand</strong>, distilled and sharpened.</p>
                 </div>
 
                 <div class="system-card">
                     <h3>POV <span>What You Believe</span></h3>
-                    <p>The stance you take in the world. Not just what you do, but what you believe and how you're different. POV is what makes brands magnetic instead of forgettable.</p>
+                    <p>The <strong>stance you take</strong> in the world. Not just what you do, but what you believe and how you're different. It's what makes brands <strong>magnetic</strong> instead of forgettable.</p>
                 </div>
 
                 <div class="system-card">
                     <h3>Voice <span>How You Sound</span></h3>
-                    <p>How you sound across every touchpoint. Not tone guidelines that sit in a folder, but a living system that makes every sentence unmistakably yours.</p>
+                    <p>What people hear across every touchpoint. Not tone guidelines that sit in a folder and get stale, but a <strong>living system</strong> that makes every sentence <strong>unmistakably yours</strong>.</p>
                 </div>
             </div>
         </div>
@@ -1033,7 +1052,7 @@
 
                 <div class="who-boundaries">
                     <h3>What I'm Not.</h3>
-                    <p>I'm not the right fit if you need design, production, day-to-day content, or campaign execution. I focus on strategic foundation and creative direction — the what and how, not the making.</p>
+                    <p>I'm not the right fit if you need hands-on design, production, day-to-day content, or campaign execution. I focus on strategic foundation and creative direction — the what and how — empowering your creative team or external agencies.</p>
                 </div>
             </div>
         </div>
@@ -1044,7 +1063,7 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Services</p>
-                <h2 class="section-title">How we can work together.</h2>
+                <h2 class="section-title">Two ways we can work together.</h2>
             </div>
 
             <div class="services-grid">
@@ -1054,13 +1073,13 @@
                         <p class="service-label">Core Service</p>
                         <h3>Brand Foundation: Narrative, POV & Voice</h3>
                         <div class="service-details">
-                            <span>5–6 weeks</span>
-                            <span>$8,500–$18,000</span>
+                            <span>3–4 weeks</span>
+                            <span>$10,000–$15,000</span>
                         </div>
                     </div>
                     <div class="service-content">
-                        <p>A strategic engagement that gives your brand <strong>complete foundational clarity</strong> — who you are, what you believe, and how you express it. This includes your brand narrative, POV statement, messaging pillars, creative north star, and foundational voice direction.</p>
-                        <p>It's the <strong>complete foundation</strong> that makes all future creative and marketing work actually mean something.</p>
+                        <p>A strategic engagement that gives your brand complete foundational clarity — who you are, what you believe, and how you express it.</p>
+                        <p>It's the <strong>base</strong> that makes all future creative and marketing work <strong>actually mean something</strong>.</p>
                     </div>
                 </div>
 
@@ -1070,55 +1089,13 @@
                         <p class="service-label">Foundation Extension</p>
                         <h3>Creative Platform & Idea Development</h3>
                         <div class="service-details">
-                            <span>3–5 weeks</span>
-                            <span>$6,000–$14,000</span>
+                            <span>3–4 weeks</span>
+                            <span>$8,500–$18,000</span>
                         </div>
                     </div>
                     <div class="service-content">
-                        <p>A sprint that translates your narrative and POV into <strong>creative building blocks</strong> — signature concepts, ownable ideas, and long-term creative platforms.</p>
-                        <p>This requires Brand Foundation (or existing narrative/POV) and <strong>bridges the gap between strategy and execution</strong>, giving you the creative direction to make your brand distinct in practice.</p>
-                    </div>
-                </div>
-
-                <!-- Service 3: Retainer -->
-                <div class="service-card">
-                    <div class="service-meta">
-                        <p class="service-label">Continuous Collaboration</p>
-                        <h3>Ongoing Creative Partnership</h3>
-                        <div class="service-details">
-                            <span>Monthly engagement</span>
-                            <span>$2,500–$7,000/month</span>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <p>For brands that have completed Brand Foundation and want <strong>continuous creative and strategic support</strong>. Regular strategy sessions, campaign concepting, launch messaging, and guidance as your brand evolves.</p>
-
-                        <div class="retainer-tiers">
-                            <div class="retainer-tier">
-                                <h4>Light-Touch Support <span>$2,500–$3,500/mo</span></h4>
-                                <ul>
-                                    <li>Monthly strategy session</li>
-                                    <li>Async creative feedback</li>
-                                    <li>48-hour response</li>
-                                </ul>
-                            </div>
-                            <div class="retainer-tier">
-                                <h4>Standard Partnership <span>$4,000–$5,500/mo</span></h4>
-                                <ul>
-                                    <li>Bi-weekly sessions</li>
-                                    <li>1 deliverable/month</li>
-                                    <li>Unlimited async feedback</li>
-                                </ul>
-                            </div>
-                            <div class="retainer-tier">
-                                <h4>Premium Collaboration <span>$6,000–$7,000/mo</span></h4>
-                                <ul>
-                                    <li>Weekly sessions</li>
-                                    <li>2–3 deliverables/month</li>
-                                    <li>Same-day response</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p>A sprint that translates your foundation into <strong>creative building blocks</strong> — ownable concepts and long-term platforms.</p>
+                        <p>This follows Brand Foundation and bridges the gap between strategy and execution, giving you the direction to make your brand <strong>distinct in practice</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -1128,17 +1105,66 @@
     <!-- What Makes Me Different -->
     <section id="why-me" class="what-i-do">
         <div class="container">
-            <div class="section-header">
-                <p class="section-label">Why I'm Different</p>
-                <h2 class="section-title">Experience across every angle.</h2>
+            <div class="different-content-wrapper">
+                <div class="section-header">
+                    <p class="section-label">Why I'm Different</p>
+                    <h2 class="section-title">The foundational work brands often skip.</h2>
+                </div>
+
+                <div class="different-content">
+                    <p>I focus on <strong>narrative, POV, and voice</strong> — not generic positioning frameworks, not 50-slide brand strategy decks. The articulation work that makes everything else actually work.</p>
+
+                    <p>I've spent the last decade in brand and creative strategy, collaborating with some of the world's biggest brands, like <strong>PepsiCo, Unilever, Warner Bros., and Corona</strong>. I've been on both ends: <strong>agency-side developing 360° campaigns</strong> for global clients, and <strong>in-house brand-building</strong>. I've seen the day-to-day reality of building something to be proud of.</p>
+
+                    <p>Before all of that, I was a journalist. My background shapes how I think about telling brand stories: <strong>cleverness in clarity, truth over spin, every word earning its place.</strong></p>
+                </div>
             </div>
 
-            <div class="different-content">
-                <p>I focus on <strong>narrative, POV, and voice</strong> — the foundational clarity most brands skip. Not generic positioning frameworks. Not 50-slide brand strategy decks. The articulation work that makes everything else actually work.</p>
-
-                <p>I've led creative and brand work for clients like <strong>PepsiCo, Unilever, Warner Bros., and Corona</strong> — from branded content and social campaigns to 360° creative strategies and in-house marketing leadership. I've been on both sides: agency-side developing creative for clients, and in-house leading brand and creative strategy.</p>
-
-                <p>I've seen how brands work from every angle: the pitch, the execution, and the day-to-day reality of running a modern brand. And my <strong>journalism background</strong> means I don't just build frameworks — I write the narrative, POV, and voice copy with clarity and punch.</p>
+            <!-- Logo ticker -->
+            <div class="logo-ticker-wrapper">
+                <div class="logo-ticker">
+                    <img src="logos/amazon.png" alt="Amazon">
+                    <img src="logos/pepsi.png" alt="Pepsi">
+                    <img src="logos/doritos.png" alt="Doritos">
+                    <img src="logos/lays.png" alt="Lay's">
+                    <img src="logos/warnerbros.png" alt="Warner Bros.">
+                    <img src="logos/mountaindew.png" alt="Mountain Dew">
+                    <img src="logos/nba.png" alt="NBA">
+                    <img src="logos/corona.png" alt="Corona">
+                    <img src="logos/nbc.png" alt="NBC">
+                    <img src="logos/activision.png" alt="Activision Blizzard">
+                    <img src="logos/directv.png" alt="DirecTV">
+                    <img src="logos/loreal.png" alt="L'Oréal">
+                    <img src="logos/unilever.png" alt="Unilever">
+                    <!-- Second set -->
+                    <img src="logos/amazon.png" alt="Amazon">
+                    <img src="logos/pepsi.png" alt="Pepsi">
+                    <img src="logos/doritos.png" alt="Doritos">
+                    <img src="logos/lays.png" alt="Lay's">
+                    <img src="logos/warnerbros.png" alt="Warner Bros.">
+                    <img src="logos/mountaindew.png" alt="Mountain Dew">
+                    <img src="logos/nba.png" alt="NBA">
+                    <img src="logos/corona.png" alt="Corona">
+                    <img src="logos/nbc.png" alt="NBC">
+                    <img src="logos/activision.png" alt="Activision Blizzard">
+                    <img src="logos/directv.png" alt="DirecTV">
+                    <img src="logos/loreal.png" alt="L'Oréal">
+                    <img src="logos/unilever.png" alt="Unilever">
+                    <!-- Third set for seamless buffer -->
+                    <img src="logos/amazon.png" alt="Amazon">
+                    <img src="logos/pepsi.png" alt="Pepsi">
+                    <img src="logos/doritos.png" alt="Doritos">
+                    <img src="logos/lays.png" alt="Lay's">
+                    <img src="logos/warnerbros.png" alt="Warner Bros.">
+                    <img src="logos/mountaindew.png" alt="Mountain Dew">
+                    <img src="logos/nba.png" alt="NBA">
+                    <img src="logos/corona.png" alt="Corona">
+                    <img src="logos/nbc.png" alt="NBC">
+                    <img src="logos/activision.png" alt="Activision Blizzard">
+                    <img src="logos/directv.png" alt="DirecTV">
+                    <img src="logos/loreal.png" alt="L'Oréal">
+                    <img src="logos/unilever.png" alt="Unilever">
+                </div>
             </div>
         </div>
     </section>
@@ -1219,7 +1245,7 @@
   }
 
   // Allow Enter key to submit
-  document.getElementById("password-input").addEventListener("keydown", function (e) {
+  document.getElementById("password-input").addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
       checkPassword();
     }
