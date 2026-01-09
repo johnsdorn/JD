@@ -436,6 +436,16 @@
             line-height: 1.25;
         }
 
+        /* Mobile line break helper */
+        .mobile-break {
+            display: none;
+        }
+
+        /* Keep "Why I'm Different" title on one line on desktop */
+        #why-me .section-title {
+            white-space: nowrap;
+        }
+
         /* What I Do */
         .what-i-do {
             background-color: var(--color-bg-elevated);
@@ -914,6 +924,11 @@
                 font-size: 2.25rem;
             }
 
+            /* Mobile hero-subhead smaller to fit 2 lines */
+            .hero-subhead {
+                font-size: 1.15rem;
+            }
+
             /* Mobile tweaks */
             nav {
                 width: 100%;
@@ -970,6 +985,16 @@
 
             #why-me {
                 scroll-margin-top: 120px;
+            }
+
+            /* Show line break on mobile */
+            .mobile-break {
+                display: block;
+            }
+
+            /* Allow Why I'm Different title to wrap on mobile */
+            #why-me .section-title {
+                white-space: normal;
             }
         }
     </style>
@@ -1078,7 +1103,7 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Services</p>
-                <h2 class="section-title">Two ways we can work together.</h2>
+                <h2 class="section-title">Two ways we can <span class="mobile-break"></span>work together.</h2>
             </div>
 
             <div class="services-grid">
