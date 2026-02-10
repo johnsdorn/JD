@@ -550,6 +550,43 @@
             line-height: 1.7;
         }
 
+.section-link {
+            display: block;
+            margin-top: var(--space-md);
+            font-family: var(--font-body);
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .section-link:hover {
+            color: var(--color-text-body);
+        }
+
+        .section-link .link-dot {
+            color: var(--color-accent);
+            margin-right: 0.5em;
+        }
+
+        .section-link .link-underline {
+            text-decoration: underline;
+            text-decoration-color: var(--color-accent);
+            text-underline-offset: 3px;
+        }
+
+        .section-link .link-arrow {
+            display: inline-block;
+            margin-left: 0.35em;
+            color: var(--color-accent);
+            transition: transform 0.3s ease;
+        }
+
+        .section-link:hover .link-arrow {
+            transform: translate(3px, -3px);
+        }
+        
         /* Who I Work With */
         .who-content {
             display: grid;
@@ -1073,6 +1110,7 @@
                     <p>What people hear across every touchpoint. Not tone guidelines that sit in a folder and get stale, but a <strong>living system</strong> that makes every sentence <strong>unmistakably yours</strong>.</p>
                 </div>
             </div>
+            <a href="/posts/marketing-without-meaning" class="section-link"><span class="link-dot">●</span>Read more about <span class="link-underline">why these systems matter</span> — and what happens when brands skip them.<span class="link-arrow">↗</span></a>
         </div>
     </section>
 
